@@ -9,8 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.annotation.Nullable;
 
 import com.example.sqlite_mio.db.contracts.DbReaderContract.CalificacionSchema;
-import com.example.sqlite_mio.db.models.Nota;
-import com.example.sqlite_mio.db.sqls.DbReadersSQL;
+import com.example.app_notas.db.models.Nota;
+import com.example.app_notas.db.sqls.DbReadersSQL;
 
 import java.util.ArrayList;
 

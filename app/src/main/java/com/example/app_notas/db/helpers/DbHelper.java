@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-import com.example.sqlite_mio.db.sqls.DbReadersSQL.ContactosSchemaSQL;
+import com.example.app_notas.db.sqls.DbReadersSQL.ContactosSchemaSQL;
 
 
 public class DbHelper extends SQLiteOpenHelper {
