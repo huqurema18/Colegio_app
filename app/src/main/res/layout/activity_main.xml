@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.168" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnConsultar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
@@ -29,13 +29,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="146dp"
         android:layout_marginTop="105dp"
         android:text="REGISTRAR"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnConsultar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
