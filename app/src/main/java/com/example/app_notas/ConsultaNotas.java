@@ -25,6 +25,8 @@ public class ConsultaNotas extends AppCompatActivity {
         //Se muestra un toast que le dice si pasa o no la materia
         btnConsul.setOnClickListener(view -> {
 
+
+
         });
 
     }

@@ -9,6 +9,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.app_notas.db.helpers.DBContacto;
+import com.example.app_notas.db.models.Nota;
+
 public class RegistrarNotas extends AppCompatActivity {
     Button btnRegis;
     Spinner spiner;
@@ -35,21 +38,24 @@ public class RegistrarNotas extends AppCompatActivity {
                 Toast.makeText(this,"Por favor ingrese una nota valida",Toast.LENGTH_LONG).show();
                 txtIngresar.setText("");
             }
+            else {
 
-            Nota cali = new Nota();
-            cali.setMateria("Ingles");
-            cali.setCalificacion(Double.parseDouble(notish.getText().toString()));
+                Nota cali = new Nota();
+                cali.setMateria("Ingles");
+                cali.setCalificacion(Double.parseDouble(txtIngresar.getText().toString()));
 
-            DBContacto dbContacto = new DBContacto(this);
-            Long result = dbContacto.insert(cali);
-            String msg = result == 0 ? "No se guardo la información" : "Información guardada";
-            System.out.println(msg);
-            limpiar();
+                DBContacto dbContacto = new DBContacto(this);
+                Long result = dbContacto.insert(cali);
+                String msg = result == 0 ? "No se guardo la información" : "Información guardada";
+                System.out.println(msg);
+                limpiar();
+            }
+
 
         });
 
     }
     private void limpiar() {
-        notish.setText("");
+        txtIngresar.setText("");
     }
 }
