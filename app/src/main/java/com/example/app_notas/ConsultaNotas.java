@@ -23,7 +23,6 @@ public class ConsultaNotas extends AppCompatActivity {
 
         //Aqui se consulta en la base de datos y se muestra en el texview con el id txtResumen
         //Se muestra un toast que le dice si pasa o no la materia
-        
         btnConsul.setOnClickListener(view -> {
 
         });

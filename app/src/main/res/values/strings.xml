@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">App_Notas</string>
+    <string-array name="Manerias">
+        <item>Matematicas</item>
+        <item>Etica</item>
+        <item>Español</item>
+        <item>Ingles</item>
+        <item>Sociales</item>
+        <item>Naturales</item>
+        <item>Sociales</item>
+    </string-array>
 </resources>
