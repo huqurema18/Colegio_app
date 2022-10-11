@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=new Intent(this,ConsultaNotas.class);
             startActivity(intent);
         });
+        private void limpiar() {
+            notish.setText("");
+        }
     }
 
 }
