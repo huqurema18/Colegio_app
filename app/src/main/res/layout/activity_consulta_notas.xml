@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txResumen"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="Consulta de notas"
@@ -31,6 +31,7 @@
 
         <TextView
             android:id="@+id/txtResumen"
+            android:textSize="24sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Resumen de notas" />
@@ -41,5 +42,6 @@
             android:layout_height="match_parent"
 
             />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
