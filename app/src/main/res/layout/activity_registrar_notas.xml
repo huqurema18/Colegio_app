@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Ingrese la nota"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName|numberDecimal" />
 
         <Button
             android:id="@+id/btnRegis"
