@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrarNotas">
+    tools:context=".RegistrarNotas"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,14 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Elija la materia "
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            android:layout_margin="30dp"/>
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            />
+            android:layout_margin="30dp" />
 
         <EditText
             android:id="@+id/txtIngresar"
@@ -31,12 +33,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Ingrese la nota"
-            android:inputType="textPersonName|numberDecimal" />
+            android:inputType="textPersonName|numberDecimal"
+            android:layout_margin="30dp"/>
 
         <Button
             android:id="@+id/btnRegis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrar" />
+            android:gravity="center"
+            android:text="Registrar"
+            android:layout_margin="30dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

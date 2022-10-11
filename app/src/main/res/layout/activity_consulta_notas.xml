@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConsultaNotas">
+    tools:context=".ConsultaNotas"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,20 +15,23 @@
         <TextView
             android:id="@+id/txResumen"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:text="Consulta de notas"
-            android:textSize="34sp" />
+            android:textSize="34sp"
+            android:layout_margin="30dp"/>
 
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"/>
 
         <Button
             android:id="@+id/btnConsul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="CONSULTAR"
+            android:layout_margin="30dp"/>
 
         <TextView
             android:id="@+id/txtResumen"
