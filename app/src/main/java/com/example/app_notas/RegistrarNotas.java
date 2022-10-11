@@ -36,6 +36,20 @@ public class RegistrarNotas extends AppCompatActivity {
                 txtIngresar.setText("");
             }
 
+            Nota cali = new Nota();
+            cali.setMateria("Ingles");
+            cali.setCalificacion(Double.parseDouble(notish.getText().toString()));
+
+            DBContacto dbContacto = new DBContacto(this);
+            Long result = dbContacto.insert(cali);
+            String msg = result == 0 ? "No se guardo la información" : "Información guardada";
+            System.out.println(msg);
+            limpiar();
+
         });
+
+    }
+    private void limpiar() {
+        notish.setText("");
     }
 }
