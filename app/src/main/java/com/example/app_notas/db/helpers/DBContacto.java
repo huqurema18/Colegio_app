@@ -94,4 +94,24 @@ public class DBContacto extends DbHelper {
         return correcto;
     }
 
+    public boolean eliminarNota(int id ) {
+        boolean correcto=false;
+        DbHelper dbHelper = new DbHelper(this.context);
+        SQLiteDatabase db1 = dbHelper.getWritableDatabase();
+        String k=DbReadersSQL.ContactosSchemaSQL.SQL_DELETE_ROW+id+"'";
+        System.out.println(k);
+        db1.execSQL(k);
+        try {
+
+            correcto=true;
+        } catch (Exception ex) {
+            System.err.println(ex);
+            correcto=false;
+
+        }finally {
+            db1.close();
+        }
+        return correcto;
+    }
+
 }

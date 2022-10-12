@@ -1,6 +1,7 @@
 package com.example.app_notas;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,9 +96,31 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
                         Toast.makeText(view.getContext(),"Nota Editada Exitosamente",Toast.LENGTH_SHORT).show();
                     }
                     System.out.println(resultado);
-
-
                 });
+                EditInflatDelete.setOnClickListener(view1 -> {
+                    AlertDialog.Builder builder1= new AlertDialog.Builder(context);
+                    builder1.setMessage("Desea elminiar este contacto?").setPositiveButton("SI",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    DBContacto dbContacto=new DBContacto(context);
+                                    if(dbContacto.eliminarNota(listaNotas.get(getAdapterPosition()).getId())){
+                                        Toast.makeText(view.getContext(),"Eliminado Exitosamente",Toast.LENGTH_SHORT).show();
+                                    }
+                                    Intent intent =new Intent(view1.getContext(),ConsultaNotas.class);
+                                    context.startActivity(intent);
+
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent =new Intent(view1.getContext(),ConsultaNotas.class);
+                                    context.startActivity(intent);
+                                }
+                            }).show();
+                });
+
                 //EditNota.setText(listaNotas.get(getAdapterPosition()).getCalificacion()+"");
                 textid.setText(listaNotas.get(getAdapterPosition()).getId()+"");
 

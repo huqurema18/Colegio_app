@@ -17,6 +17,8 @@ public final class DbReadersSQL {
         public static final String SQL_SELECT = "SELECT * FROM "+ DbReaderContract.CalificacionSchema.TABLE_NAME;
         public static final String SQL_UPDATE = "UPDATE "+ DbReaderContract.CalificacionSchema.TABLE_NAME+ " SET "
                 + DbReaderContract.CalificacionSchema.COLUMN_NAME_CALIFICACION+" = ";
+        public static final String SQL_DELETE_ROW = "DELETE FROM "+ DbReaderContract.CalificacionSchema.TABLE_NAME+
+                " WHERE _id= '";
         //SELECT * FROM DIRECCION WHERE WHERE materia = 'ingles';
     }
 }
