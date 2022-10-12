@@ -7,13 +7,7 @@
     tools:context=".ConsultaNotas"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/txtResumen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Resumen de notas"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteY="301dp" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -63,13 +57,13 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btnparaeditar"
+                    android:id="@+id/btnparacalcular"
                     android:layout_width="123dp"
                     android:layout_height="wrap_content"
                     android:text="Button" />
 
                 <TextView
-                    android:id="@+id/txnotaaeditar"
+                    android:id="@+id/txnotaacalcular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="64sp"
@@ -77,11 +71,12 @@
                     android:text="4" />
 
                 <TextView
-                    android:id="@+id/txhintid"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:id="@+id/txtResumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="94dp"
+                    android:text="Resumen de notas"
+                    android:textSize="24sp"
+                    tools:layout_editor_absoluteY="301dp" />>
 
             </LinearLayout>
 

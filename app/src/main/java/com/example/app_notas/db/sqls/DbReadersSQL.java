@@ -15,6 +15,8 @@ public final class DbReadersSQL {
                 + ")";
         public static final String SQL_DELETE = "DROP TABLE IF EXISTS " + DbReaderContract.CalificacionSchema.TABLE_NAME;
         public static final String SQL_SELECT = "SELECT * FROM "+ DbReaderContract.CalificacionSchema.TABLE_NAME;
+        public static final String SQL_UPDATE = "UPDATE "+ DbReaderContract.CalificacionSchema.TABLE_NAME+ " SET "
+                + DbReaderContract.CalificacionSchema.COLUMN_NAME_CALIFICACION+" = ";
         //SELECT * FROM DIRECCION WHERE WHERE materia = 'ingles';
     }
 }

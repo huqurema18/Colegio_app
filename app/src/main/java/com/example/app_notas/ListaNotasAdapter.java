@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.app_notas.R;
 //import com.example.app_notas.VerActivity;
+import com.example.app_notas.db.helpers.DBContacto;
 import com.example.app_notas.db.models.Nota;
 import com.example.app_notas.db.models.NotaEdit;
 
@@ -71,19 +72,52 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
                 NotaEdit h=new NotaEdit();
                 h.setId(listaNotas.get(getAdapterPosition()).getId());
                 h.setNota(listaNotas.get(getAdapterPosition()).getCalificacion());
-                Intent intent = new Intent(context,editaNota.class);
-                context.startActivity(intent);
 
-                Toast.makeText(context,"hfvjksfvb"+listaNotas.get(getAdapterPosition()).getCalificacion(),Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                LayoutInflater layoutInflaterAndroid = LayoutInflater.from(context);
+                View mview = layoutInflaterAndroid.inflate(R.layout.edit_nota, null);
+                final EditText EditNota =(EditText) mview.findViewById(R.id.editTxNota);
+                final TextView textid =(TextView) mview.findViewById(R.id.textidextract);
+                final Button EditInflatDelete=(Button) mview.findViewById(R.id.btnDeleteEditNota);
+                final Button EditInflatEdit=(Button) mview.findViewById(R.id.btnEditNota);
+
+                EditInflatDelete.setOnClickListener(view1 -> {
+                    System.out.println("caremonda");
+                });
+                EditInflatEdit.setOnClickListener(view1 -> {
+                    Nota nota1=new Nota();
+                    DBContacto dbContacto=new DBContacto(context);
+                    nota1.setId(listaNotas.get(getAdapterPosition()).getId());
+                    nota1.setMateria(listaNotas.get(getAdapterPosition()).getMateria());
+                    nota1.setCalificacion(Double.parseDouble(EditNota.getText().toString()));
+                    Boolean resultado=dbContacto.editNota(nota1);
+                    if(resultado){
+                        Toast.makeText(view.getContext(),"Nota Editada Exitosamente",Toast.LENGTH_SHORT).show();
+                    }
+                    System.out.println(resultado);
 
 
+                });
+                //EditNota.setText(listaNotas.get(getAdapterPosition()).getCalificacion()+"");
+                textid.setText(listaNotas.get(getAdapterPosition()).getId()+"");
 
+                Nota nota=new Nota();
+                builder.setView(mview);
+                AlertDialog dialog=builder.create();
+                dialog.show();
+                DBContacto dbContacto=new DBContacto(context);
+                nota=dbContacto.verContactos(listaNotas.get(getAdapterPosition()).getId());
+                if(nota!=null){
+                    EditNota.setText(nota.getCalificacion()+"");
 
+                }
 
 
             });
 
         }
+
+
     }
 
 

@@ -22,8 +22,8 @@ import java.util.ArrayList;
 public class ConsultaNotas extends AppCompatActivity {
     Spinner spiner2;
     Button btnConsul;
-    Button paraeditar;
-    TextView resumen,hintid,notaedit;
+    Button paracalcular;
+    TextView resumen,notaacalcular;
     RecyclerView Recycler;
     ListaNotasAdapter adapter;
 
@@ -33,9 +33,8 @@ public class ConsultaNotas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta_notas);
 
-        paraeditar=findViewById(R.id.btnparaeditar);
-        notaedit=findViewById(R.id.txnotaaeditar);
-        hintid=findViewById(R.id.txhintid);
+        paracalcular=findViewById(R.id.btnparacalcular);
+        notaacalcular=findViewById(R.id.txnotaacalcular);
         spiner2=findViewById(R.id.spinner2);
         btnConsul=findViewById(R.id.btnConsul);
         resumen=findViewById(R.id.txtResumen);
@@ -47,23 +46,27 @@ public class ConsultaNotas extends AppCompatActivity {
         DBContacto dbContacto = new DBContacto(this);
         Nota cali=new Nota();
 
-        ArrayList<Nota> ll=new ArrayList<>();
-        ll=dbContacto.mostrarContactos();
 
 
-        double suma=0;
-        int divi=0;
-        for(int i=0;i<ll.size();i++){
-            System.out.println("Nota: "+i+" "+ll.get(i).getCalificacion());
-            suma+=ll.get(i).getCalificacion();
-            divi++;
-        }
-        double respuesta=suma/divi;
-        if(respuesta>=3){
-            resumen.setText("Vas pasando, tu promedio es: "+respuesta);
-        }else{
-            resumen.setText("Va perdiendo, tu promedio es: "+respuesta);
-        }
+
+        paracalcular.setOnClickListener(view -> {
+            ArrayList<Nota> ll=new ArrayList<>();
+            ll=dbContacto.mostrarContactos();
+            double suma=0;
+            int divi=0;
+            for(int i=0;i<ll.size();i++){
+                System.out.println("Nota: "+i+" "+ll.get(i).getCalificacion());
+                suma+=ll.get(i).getCalificacion();
+                divi++;
+            }
+            double respuesta=suma/divi;
+            notaacalcular.setText(respuesta+"");
+            if(respuesta>=3){
+                resumen.setText("Vas pasando, tu promedio es: "+respuesta);
+            }else{
+                resumen.setText("Va perdiendo, tu promedio es: "+respuesta);
+            }
+        });
 
         //Aqui se consulta en la base de datos y se muestra en el texview con el id txtResumen
         //Se muestra un toast que le dice si pasa o no la materia
@@ -74,10 +77,9 @@ public class ConsultaNotas extends AppCompatActivity {
 
 
         });
-        NotaEdit j=new NotaEdit();
-        notaedit.setText(j.getNota()+"");
 
 
+        /*
         paraeditar.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             View mview= getLayoutInflater().inflate(R.layout.edit_nota,null);
@@ -85,12 +87,13 @@ public class ConsultaNotas extends AppCompatActivity {
             final EditText EditNota =(EditText) mview.findViewById(R.id.editTxNota);
             final Button EditInflatDelete=(Button) mview.findViewById(R.id.btnDeleteEditNota);
             final Button EditInflatEdit=(Button) mview.findViewById(R.id.btnEditNota);
-            NotaEdit jg=new NotaEdit();
-            EditNota.setText(jg.getNota()+"");
+
             builder.setView(mview);
             AlertDialog dialog=builder.create();
             dialog.show();
-        });
+            NotaEdit jg=new NotaEdit();
+            EditNota.setText(jg.getNota()+"");
+        });*/
 
     }
 }
