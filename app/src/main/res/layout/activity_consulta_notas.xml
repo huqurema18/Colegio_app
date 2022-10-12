@@ -7,7 +7,16 @@
     tools:context=".ConsultaNotas"
     android:background="@color/white">
 
+    <TextView
+        android:id="@+id/txtResumen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resumen de notas"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteY="301dp" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -16,29 +25,23 @@
             android:id="@+id/txResumen"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_margin="30dp"
             android:text="Consulta de notas"
-            android:textSize="34sp"
-            android:layout_margin="30dp"/>
+            android:textSize="34sp" />
 
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"/>
+
+            android:layout_margin="30dp" />
 
         <Button
             android:id="@+id/btnConsul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CONSULTAR"
-            android:layout_margin="30dp"/>
-
-        <TextView
-            android:id="@+id/txtResumen"
-            android:textSize="24sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Resumen de notas" />
+            android:layout_margin="30dp"
+            android:text="CONSULTAR" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/Recycler"

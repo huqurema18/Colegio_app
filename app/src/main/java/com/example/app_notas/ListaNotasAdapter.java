@@ -37,6 +37,7 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
     @Override
     public void onBindViewHolder(@NonNull NotasViewHolder holder, int position) {
         holder.viewNotas.setText( listaNotas.get(position).getCalificacion()+"");
+        holder.idtext.setText(listaNotas.get(position).getId()+"");
     }
 
     @Override
@@ -46,12 +47,13 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
 
     public class NotasViewHolder extends RecyclerView.ViewHolder {
 
-        TextView  viewNotas;
+        TextView  viewNotas,idtext;
 
         public NotasViewHolder(@NonNull View itemView) {
             super(itemView);
 
             viewNotas = itemView.findViewById(R.id.txtNota);
+            idtext=itemView.findViewById(R.id.textid);
 
 
         }
