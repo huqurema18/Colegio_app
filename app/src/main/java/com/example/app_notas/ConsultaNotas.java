@@ -1,11 +1,14 @@
 package com.example.app_notas;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -58,8 +61,16 @@ public class ConsultaNotas extends AppCompatActivity {
 
             adapter = new ListaNotasAdapter(dbContacto.mostrarContactos());
             Recycler.setAdapter(adapter);
-        
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            View mview= getLayoutInflater().inflate(R.layout.edit_nota,null);
+            final EditText EditNota =(EditText) mview.findViewById(R.id.editTxNota);
+            final Button EditInflatDelete=(Button) mview.findViewById(R.id.btnDeleteEditNota);
+            final Button EditInflatEdit=(Button) mview.findViewById(R.id.btnEditNota);
+
+            builder.setView(mview);
+            AlertDialog dialog=builder.create();
+            dialog.show();
         });
 
     }
