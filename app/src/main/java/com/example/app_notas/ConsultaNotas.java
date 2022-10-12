@@ -1,6 +1,8 @@
 package com.example.app_notas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -16,6 +18,8 @@ public class ConsultaNotas extends AppCompatActivity {
     Spinner spiner2;
     Button btnConsul;
     TextView resumen;
+    RecyclerView Recycler;
+    ListaNotasAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +28,16 @@ public class ConsultaNotas extends AppCompatActivity {
         spiner2=findViewById(R.id.spinner2);
         btnConsul=findViewById(R.id.btnConsul);
         resumen=findViewById(R.id.txtResumen);
-
+        Recycler=findViewById(R.id.Recycler);
+        Recycler.setLayoutManager(new LinearLayoutManager(this));
+        
         DBContacto dbContacto = new DBContacto(this);
         Nota cali=new Nota();
+
         ArrayList<Nota> ll=new ArrayList<>();
         ll=dbContacto.mostrarContactos();
+
+        
         double suma=0;
         int divi=0;
         for(int i=0;i<ll.size();i++){
@@ -47,7 +56,9 @@ public class ConsultaNotas extends AppCompatActivity {
         //Se muestra un toast que le dice si pasa o no la materia
         btnConsul.setOnClickListener(view -> {
 
-
+            adapter = new ListaNotasAdapter(dbContacto.mostrarContactos());
+            Recycler.setAdapter(adapter);
+        
 
         });
 
