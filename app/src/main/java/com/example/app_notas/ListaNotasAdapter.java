@@ -70,9 +70,6 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
 
             itemView.setOnClickListener(view -> {
                 Context context =view.getContext();
-                NotaEdit h=new NotaEdit();
-                h.setId(listaNotas.get(getAdapterPosition()).getId());
-                h.setNota(listaNotas.get(getAdapterPosition()).getCalificacion());
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 LayoutInflater layoutInflaterAndroid = LayoutInflater.from(context);
@@ -91,11 +88,16 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
                     nota1.setId(listaNotas.get(getAdapterPosition()).getId());
                     nota1.setMateria(listaNotas.get(getAdapterPosition()).getMateria());
                     nota1.setCalificacion(Double.parseDouble(EditNota.getText().toString()));
-                    Boolean resultado=dbContacto.editNota(nota1);
-                    if(resultado){
-                        Toast.makeText(view.getContext(),"Nota Editada Exitosamente",Toast.LENGTH_SHORT).show();
+                    if(nota1.getCalificacion()>5){
+                        Toast.makeText(view.getContext(),"Esa nota no es válida",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Boolean resultado=dbContacto.editNota(nota1);
+                        if(resultado){
+                            Toast.makeText(view.getContext(),"Nota Editada Exitosamente",Toast.LENGTH_SHORT).show();
+                        }
+                        System.out.println(resultado);
                     }
-                    System.out.println(resultado);
+
                 });
                 EditInflatDelete.setOnClickListener(view1 -> {
                     AlertDialog.Builder builder1= new AlertDialog.Builder(context);

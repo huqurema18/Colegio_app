@@ -1,24 +1,23 @@
 package com.example.app_notas.db.models;
 
+import java.util.ArrayList;
+
 public class NotaEdit {
-    private double nota;
-    private int id;
-
-    public double getNota() {
-        return nota;
+    public ArrayList<String> getListMaterias() {
+        return listMaterias;
+    }
+    public int getSize() {
+        return listMaterias.size();
+    }
+    public void setListMaterias(ArrayList<String> listMaterias) {
+        this.listMaterias = listMaterias;
+    }
+    public void setNodoMaterias(String nodo) {
+        listMaterias.add(nodo);
     }
 
-    public void setNota(double nota) {
-        this.nota = nota;
-    }
+    private ArrayList<String> listMaterias=new ArrayList<>();
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
 
 }

@@ -60,7 +60,7 @@
                     android:id="@+id/btnparacalcular"
                     android:layout_width="123dp"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:text="promedio" />
 
                 <TextView
                     android:id="@+id/txnotaacalcular"
