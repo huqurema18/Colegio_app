@@ -85,7 +85,12 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
                     DBContacto dbContacto=new DBContacto(context);
                     nota1.setId(listaNotas.get(getAdapterPosition()).getId());
                     nota1.setMateria(listaNotas.get(getAdapterPosition()).getMateria());
-                    nota1.setCalificacion(Double.parseDouble(EditNota.getText().toString()));
+                    try {
+                        nota1.setCalificacion(Double.parseDouble(EditNota.getText().toString()));
+                    }catch (Exception e){
+                        nota1.setCalificacion(6);
+                    }
+
                     if(nota1.getCalificacion()>5||nota1.getCalificacion()<0){
                         Toast.makeText(view.getContext(),"Esa nota no es válida",Toast.LENGTH_SHORT).show();
                     }else{

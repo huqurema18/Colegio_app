@@ -96,8 +96,12 @@ public class RegistrarNotas extends AppCompatActivity {
         btnRegis.setOnClickListener(view -> {
 
 
-
-            float captura= Float.valueOf(txtIngresar.getText().toString());
+            float captura;
+            try {
+                captura= Float.valueOf(txtIngresar.getText().toString());
+            }catch (Exception e){
+                captura=6;
+            }
 
             if (captura>5||captura<0){
 
