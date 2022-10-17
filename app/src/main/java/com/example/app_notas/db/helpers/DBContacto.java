@@ -76,24 +76,28 @@ public class DBContacto extends DbHelper {
         return nota;
 
     }
-    public Nota verContactosMateria(String mat){
+    public ArrayList<Nota> mostrarNotaConMateria(String mat){
         DbHelper dbHelper = new DbHelper(this.context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-
+        ArrayList<Nota> listaNotas = new ArrayList<>();
         Nota nota = null;
-        Cursor cursornotas;
-        cursornotas=db.rawQuery("SELECT * FROM calificaciones WHERE materia = " +mat, null);
-        if(cursornotas.moveToFirst()){
-            nota=new Nota();
-            nota.setId(cursornotas.getInt(0));
-            nota.setMateria(cursornotas.getString(1));
-            nota.setCalificacion(cursornotas.getDouble(2));
+        Cursor cursornotas = null;
 
+        cursornotas=db.rawQuery("SELECT * FROM calificaciones WHERE materia = '" +mat+"'", null);
+        if(cursornotas.moveToFirst()){
+            do{
+                nota=new Nota();
+                nota.setId(cursornotas.getInt(0));
+                nota.setMateria(cursornotas.getString(1));
+                nota.setCalificacion(cursornotas.getDouble(2));
+                listaNotas.add(nota);
+            }while (cursornotas.moveToNext());
         }
         cursornotas.close();
-        return nota;
+        return listaNotas;
 
     }
+
     public boolean editNota(Nota nota) {
         boolean correcto=false;
         DbHelper dbHelper = new DbHelper(this.context);

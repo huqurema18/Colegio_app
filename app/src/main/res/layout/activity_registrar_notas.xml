@@ -8,6 +8,7 @@
     android:background="@color/white">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -16,42 +17,44 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="30dp"
             android:text="Elija la materia "
-            android:textSize="48sp"
-            android:layout_margin="30dp"/>
+            android:textSize="48sp" />
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:layout_margin="30dp"
-            android:layout_weight="0" />
+            android:layout_height="45dp"
+            android:layout_margin="45dp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"></View>
         <EditText
             android:id="@+id/txtIngresar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="30dp"
             android:ems="10"
             android:hint="Ingrese la nota"
-            android:inputType="textPersonName|numberDecimal"
-            android:layout_margin="30dp"/>
+            android:inputType="textPersonName|numberDecimal" />
 
         <Button
             android:id="@+id/btnRegis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="30dp"
             android:gravity="center"
-            android:text="Registrar"
-            android:layout_margin="30dp"/>
+            android:text="Registrar" />
 
         <Button
             android:id="@+id/btnanadirmateria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nueva materia"
-            android:layout_marginTop="120dp"
             android:layout_marginLeft="190dp"
-            android:layout_marginRight="30dp"/>
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="30dp"
+            android:text="Nueva materia" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

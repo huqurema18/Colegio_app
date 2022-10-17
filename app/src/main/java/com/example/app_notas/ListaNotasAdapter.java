@@ -79,16 +79,14 @@ public class ListaNotasAdapter extends RecyclerView.Adapter<ListaNotasAdapter.No
                 final Button EditInflatDelete=(Button) mview.findViewById(R.id.btnDeleteEditNota);
                 final Button EditInflatEdit=(Button) mview.findViewById(R.id.btnEditNota);
 
-                EditInflatDelete.setOnClickListener(view1 -> {
-                    System.out.println("caremonda");
-                });
+
                 EditInflatEdit.setOnClickListener(view1 -> {
                     Nota nota1=new Nota();
                     DBContacto dbContacto=new DBContacto(context);
                     nota1.setId(listaNotas.get(getAdapterPosition()).getId());
                     nota1.setMateria(listaNotas.get(getAdapterPosition()).getMateria());
                     nota1.setCalificacion(Double.parseDouble(EditNota.getText().toString()));
-                    if(nota1.getCalificacion()>5){
+                    if(nota1.getCalificacion()>5||nota1.getCalificacion()<0){
                         Toast.makeText(view.getContext(),"Esa nota no es válida",Toast.LENGTH_SHORT).show();
                     }else{
                         Boolean resultado=dbContacto.editNota(nota1);

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +28,8 @@ public class RegistrarNotas extends AppCompatActivity {
     Spinner spiner;
     EditText txtIngresar;
 
-    float captura;
+
+    String materia,doble;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,15 +44,30 @@ public class RegistrarNotas extends AppCompatActivity {
 
         SharedPreferences preferences=getSharedPreferences("usur",MODE_PRIVATE);
         SharedPreferences.Editor editor=preferences.edit();
-        if(preferences.getString("nueva","none")!="none"){
+        if(preferences.getString("nueva","none")!=doble){
             String aux=preferences.getString("nueva","none");
             anadir.setNodoMaterias(aux);
+            doble=aux;
         }
         System.out.println(anadir.getListMaterias());
         ArrayList<String>spin=new ArrayList<>();
         spin.addAll(anadir.getListMaterias());
         ArrayAdapter<String>adapter=new ArrayAdapter<>(getApplicationContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,anadir.getListMaterias());
         spiner.setAdapter(adapter);
+
+        spiner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                materia= (String) adapterView.getSelectedItem();
+
+                System.out.println("seleccionado es: "+materia);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
         btnNuevaMateria.setOnClickListener(view -> {
@@ -78,9 +95,11 @@ public class RegistrarNotas extends AppCompatActivity {
         //Cuando se aoprime el boton se envia la nota a la base de datos
         btnRegis.setOnClickListener(view -> {
 
+
+
             float captura= Float.valueOf(txtIngresar.getText().toString());
 
-            if (captura>5){
+            if (captura>5||captura<0){
 
                 Toast.makeText(this,"Por favor ingrese una nota valida",Toast.LENGTH_LONG).show();
                 txtIngresar.setText("");
@@ -88,8 +107,9 @@ public class RegistrarNotas extends AppCompatActivity {
             else {
 
                 Nota cali = new Nota();
-                cali.setMateria("Ingles");
-                cali.setCalificacion(Double.parseDouble(txtIngresar.getText().toString()));
+                cali.setMateria(materia);
+                double auxiliar=Double.parseDouble(txtIngresar.getText().toString());
+                cali.setCalificacion(Double.parseDouble(String.format("%.2f",auxiliar)));
 
                 DBContacto dbContacto = new DBContacto(this);
                 Long result = dbContacto.insert(cali);
